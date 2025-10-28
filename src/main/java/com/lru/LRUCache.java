@@ -3,6 +3,12 @@
     import java.util.HashMap;
     import java.util.Map;
 
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.stereotype.Service;
+
+
+
+    @Service
     public class LRUCache {
         /*
         * The Node class is used to store a single value
@@ -45,7 +51,7 @@
          *
          * @param capacity the maximum number of entries the cache may hold; expected to be > 0
          */
-        public LRUCache(int capacity){
+        public LRUCache(@Value("${cache.capacity:5}") int capacity){
             this.capacity = capacity;
             this.cacheMap = new HashMap<>();
             this.head = new Node( 0, 0);
